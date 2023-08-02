@@ -3,16 +3,6 @@ ufw allow 80
 ufw allow 443
 echo "Ports 80, 443 opened, ensure they are open on VM hosting service too."
 
-# Create 1GB swap memory
-mkdir -p /var/swapmemory
-cd /var/swapmemory
-dd if=/dev/zero of=swapfile bs=1M count=1000
-mkswap swapfile
-swapon swapfile
-chmod 600 swapfile
-free -m
-echo "Swap memory created."
-
 # Boost network performance
 sysctl -w net.core.rmem_max=26214400
 sysctl -w net.core.rmem_default=26214400
